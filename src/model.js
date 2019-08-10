@@ -1,6 +1,6 @@
+const ModelCreator = ModelReducer.ModelCreator;
 
 var MousePositionModelCreator = new ModelCreator("MousePosition");
-MousePositionModelCreator.setFormsACollection(false);
 MousePositionModelCreator.addProperty("pos", "object");
 MousePositionModelCreator.addProperty("buttons", "number");
 
@@ -17,7 +17,6 @@ var MousePositionModel = MousePositionModelCreator.finaliseModel();
 
 
 var ShipModelCreator = new ModelCreator("Ship");
-ShipModelCreator.setFormsACollection(false);
 ShipModelCreator.addProperty("pos", "number");
 ShipModelCreator.addProperty("in_air", "boolean");
 ShipModelCreator.addProperty("jump_date", "number");
@@ -69,7 +68,7 @@ ShipModelCreator.addAction( "Jump", function(state, date) {
 });
 ShipModelCreator.addRequest( "Draw", function(state, ctx, maxSize, date) {
     ctx.fillStyle = "black";
-    var y = maxSize.y/2 + maxSize.y/6;
+    var y = maxSize.y - maxSize.y/6;
     if ( state.in_air ) {
         y = y - (maxSize.y/6)*Math.sin(
             Math.PI*(date-state.jump_date)/jumpDuration

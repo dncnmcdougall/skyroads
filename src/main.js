@@ -12,10 +12,10 @@ window.onkeydown = (event) => {
     // console.log("event:", event.code)
     switch ( event.code ) {
         case "ArrowRight":
-            shipState = ShipModel.reduce("Ship.MoveRight", shipState);
+            shipState = ShipModel.reduce("Ship.MoveRight", shipState, intervalCount);
             break;
         case "ArrowLeft":
-            shipState = ShipModel.reduce("Ship.MoveLeft", shipState);
+            shipState = ShipModel.reduce("Ship.MoveLeft", shipState, intervalCount);
             break;
         case "ArrowUp":
         case "Space":
